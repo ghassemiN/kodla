@@ -1,5 +1,5 @@
-# Turkish Coding
-
+# Spell Turkish word
+A web application for spelling or codding Turkish words. 
 
 ## Installation
 ```
