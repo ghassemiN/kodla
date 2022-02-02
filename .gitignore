@@ -2,3 +2,5 @@ myenv/
 .idea/
 .env
 __pycache__/
+static/*
+!static/.gitkeep
