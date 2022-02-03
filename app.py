@@ -1,4 +1,3 @@
-from re import S
 from flask import Flask, render_template, request, escape
 from letters import *
 from gtts import gTTS
@@ -30,16 +29,19 @@ def coding():
     my_word = request.form['words']
     coded_string = ""
 
-    for i in range(len(my_word)):
-        if i not in replcae_letters:
+    for i in my_word:
+        if i in lower_upper:
+            i = lower_upper[i]
+        
+        if i not in replace_letters:
           return render_template('index.html',err_msg= " Your entry could involve : lower or upper letters/numbers/_/-/space")
 
     if len(my_word)!= 0 or len(my_word) > 30:
         for i in range(len(my_word)):
             if i == 0:
-                coded_string = coded_string + replcae_letters[my_word.upper()[i]]
+                coded_string = coded_string + replace_letters[my_word.upper()[i]]
             else:
-                coded_string = coded_string + " , " + replcae_letters[my_word.upper()[i]]
+                coded_string = coded_string + " , " + replace_letters[my_word.upper()[i]]
 
         file_name = play_word(coded_string)
         return render_template('index.html',coded_string= escape(coded_string) , file_name=file_name)

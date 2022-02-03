@@ -1,4 +1,4 @@
-replcae_letters = {
+replace_letters = {
     "A" : "Adana",
     "B" : "Bolu",
     "C" : "Ceyhan",
