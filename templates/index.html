@@ -12,11 +12,11 @@
     
     <p>
         <form  action="{{ url_for('coding') }}" method="post">
-            <label>Enter the Turkish word/words in the field below : </label><br>
+            <label>Enter the Turkish word/words in the field below : </label><br><br>
             <input type="text" name="words">
             <input type="submit" value="Press me to decod your word">
         </form>
-        <br><br>
+        <br>
     
         <p style="color: red;">{{ err_msg }}</p><br>
     </p>
