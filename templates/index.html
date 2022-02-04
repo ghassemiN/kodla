@@ -15,9 +15,11 @@
             <input type="submit" value="Press me to decod your word">
         </form>
         <br><br>
-        <p style="color: red;">{{ err_msg }}</p>
+    
+        <p style="color: red;">{{ err_msg }}</p><br>
     </p>
-    <p>THE ENCODE WORD IS : {{ coded_string }}</p>
+    <p style="color: blue;"> The word/words you have enterd is: {{ my_word }}</p><br>
+    <p style="color: green;">THE ENCODE WORD IS : {{ coded_string }}</p>
 
     <audio controls>
         <source src="static/{{ file_name }}.mp3" type="audio/mpeg">

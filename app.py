@@ -44,7 +44,7 @@ def coding():
                 coded_string = coded_string + " , " + replace_letters[my_word.upper()[i]]
 
         file_name = play_word(coded_string)
-        return render_template('index.html',coded_string= escape(coded_string) , file_name=file_name)
+        return render_template('index.html',coded_string= escape(coded_string) , file_name=file_name,my_word=my_word)
     else: 
         return render_template('index.html',err_msg="Check your entry, it should be between 1-30 letters")
 
