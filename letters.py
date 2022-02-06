@@ -28,7 +28,7 @@ replace_letters = {
     "Ğ" : "Yumuşak G",
     "İ" : "İzmir",
     "Ş" : "Şırnak",
-    "Q" : "Q",
+    "Q" : "Q???",
     "X" : "İks",
     "W" : "Çift ve",
     " " : "BOŞLUK",
