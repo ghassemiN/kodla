@@ -28,6 +28,9 @@ replace_letters = {
     "Ğ" : "Yumuşak G",
     "İ" : "İzmir",
     "Ş" : "Şırnak",
+    "Q" : "Q",
+    "X" : "İks",
+    "W" : "Çift ve",
     " " : "BOŞLUK",
     "-" : "TIRE",
     "_" : "ALT TIRE",
@@ -73,5 +76,8 @@ lower_upper = {
   "ü" : "Ü",  
   "v" : "V",  
   "y" : "Y",  
-  "z" : "Z"
+  "z" : "Z",
+  "w" : "W",
+  "x" : "X",
+  "q" : "Q"
 }

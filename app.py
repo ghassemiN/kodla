@@ -4,11 +4,8 @@ from gtts import gTTS
 from playsound import playsound
 import random, string, json
 
-
-
 app=Flask(__name__,template_folder='templates', static_folder='static')
 app.config["DEBUG"] = True
-
 
 @app.route('/')
 def home():
@@ -39,7 +36,6 @@ def validator(a_word):
         
 # Spells the word given to it 
 def spelling_alphabet(a_word):
-
     coded_string = ""
     for i in range(len(a_word)):
         if i == 0:
@@ -51,7 +47,7 @@ def spelling_alphabet(a_word):
 
 
 @app.route("/", methods=['POST'])
-# Get the word/words and response 
+# render template
 def kodla():
     my_word = request.form['words']
     my_result = validator(my_word)
@@ -63,7 +59,7 @@ def kodla():
     return render_template('index.html',coded_string= escape(spelled) , file_name=file_name, my_word=my_word)
 
 
-# api spelling alphabet
+# take and response json entry
 @app.route("/api", methods=['POST']) 
 def api_kodla():
     data = json.dumps(request.get_json())
@@ -81,7 +77,9 @@ def api_kodla():
         'coded_string' : spelled,
         'audio_file_path'    : "static/"+file_name+".mp3",
     }
-    return jsonify({'message' : result }),200
+    return jsonify(result),200
+
+
 
 if __name__ == "__main__":
     app.run()
