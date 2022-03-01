@@ -1,8 +1,16 @@
+import re
 from flask import Flask, render_template, request, escape, jsonify
 from letters import *
 from gtts import gTTS
 from playsound import playsound
 import random, string, json
+from credentials import bot_token, bot_user_name,URL
+import telegram
+
+global bot
+global TOKEN
+TOKEN = bot_token
+bot = telegram.Bot(token=TOKEN)
 
 app=Flask(__name__,template_folder='templates', static_folder='static')
 app.config["DEBUG"] = True
@@ -75,10 +83,44 @@ def api_kodla():
     file_name = play_word(spelled)
     result = {
         'coded_string' : spelled,
-        'audio_file_path'    : "static/"+file_name+".mp3",
+        'audio_file_path' : "static/"+file_name+".mp3",
     }
     return jsonify(result),200
 
+
+# Telegram bot
+@app.route('/{}'.format(TOKEN), methods=['POST'])
+def response():
+    update = telegram.Update.de_json(request.get_json(force=True), bot)
+
+    chat_id = update.message.chat.id
+    msg_id = update.message.message_id
+
+    text = update.message.text.encode('utf-8').decode()
+    
+    text = validator(text)
+    if text != 200:
+        bot.sendMessage(chat_id=chat_id, text="Oops,somethig wrong. Your text should involved: En or Tr Alphabet/numbers/space/_/-", reply_to_message_id=msg_id)
+    else:
+
+        spelled = spelling_alphabet(text)
+        file_name = play_word(spelled)
+        bot.sendMessage(chat_id=chat_id, text=spelled, reply_to_message_id=msg_id)
+        bot.send_audio(chat_id=chat_id, audio=open('static/'+file_name+".mp3", 'rb'))
+
+    return 'ok'
+
+# set webhook
+@app.route('/setwebhook', methods=['GET', 'POST'])
+def set_webhook():
+    # we use the bot object to link the bot to our app which live
+    # in the link provided by URL
+    s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
+    # something to let us know things work
+    if s:
+        return "webhook setup ok"
+    else:
+        return "webhook setup failed"
 
 
 if __name__ == "__main__":

@@ -47,3 +47,5 @@ If my_word envolve forbidden characters:
     "message": "Your entry should be between 1-30 letters"
 }
 ```
+# Kodla telegram bot
+Here it is a telegram bot for Kodla: [kodla](https://t.me/kodlarmisin_bot)
