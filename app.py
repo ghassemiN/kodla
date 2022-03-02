@@ -29,7 +29,7 @@ def play_word(coded_string):
 
 # Validates user entry
 def validator(a_word):
-    print (a_word)
+
     for i in a_word:
         if i in lower_upper:
             i = lower_upper[i]
@@ -98,8 +98,7 @@ def response():
 
     text = update.message.text.encode('utf-8').decode()
     
-    text = validator(text)
-    if text != 200:
+    if validator(text) != 200:
         bot.sendMessage(chat_id=chat_id, text="Oops,somethig wrong. Your text should involved: En or Tr Alphabet/numbers/space/_/-", reply_to_message_id=msg_id)
     else:
 
