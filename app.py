@@ -106,7 +106,7 @@ def response():
        # send the welcoming message
        bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     
-    if validator(text) != 200:
+    elif validator(text) != 200:
         bot.sendMessage(chat_id=chat_id, text="Oops,somethig wrong. Your text should involved: En or Tr Alphabet/numbers/space/_/-", reply_to_message_id=msg_id)
     else:
 
