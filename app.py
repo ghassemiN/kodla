@@ -97,6 +97,14 @@ def response():
     msg_id = update.message.message_id
 
     text = update.message.text.encode('utf-8').decode()
+
+    if text == "/start":
+        # welcome message
+       bot_welcome = """
+       Welcome to Kodla bot, The bot is created for coding Turkish alphabet. To start just enter your word/words. The word could involved: En or Tr Alphabet/numbers/space/_/-
+       """
+       # send the welcoming message
+       bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     
     if validator(text) != 200:
         bot.sendMessage(chat_id=chat_id, text="Oops,somethig wrong. Your text should involved: En or Tr Alphabet/numbers/space/_/-", reply_to_message_id=msg_id)
