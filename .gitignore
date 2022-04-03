@@ -4,4 +4,5 @@ myenv/
 __pycache__/
 static/*
 !static/.gitkeep
+!static/assets/
 credentials.py

@@ -1,36 +1,168 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name="description" content="Kodla is a web application for spelling or codding Turkish alphabet.">
-    <meta name="keywords" content="NATO phonetic alphabet, spelling alphabet, codding alphabet, codding turkish alphabet, spelling turkish apphabet">
-    <title>Turkish spelling Alphabet</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    <p>
-        This is an application for codding Turkish alphabet. This is known as the <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">NATO phonetic alphabet.</a>
-    </p>
-    <p>
-        <form  action="{{ url_for('kodla') }}" method="post">
-            <label>Enter the Turkish word/words in the field below : </label><br><br>
-            <input type="text" name="words">
-            <input type="submit" value="Press me to decod your word">
-        </form>
-        <br>
-    
-        <p style="color: red;">{{ err_msg }}</p><br>
-    </p>
-    <p style="color: blue;"> The word/words you have enterd is: {{ my_word }}</p><br>
-    <p style="color: green;">THE ENCODE WORD IS : {{ coded_string }}</p><br>
-    <label>Listen the words  : </label> <br>
-    <audio controls>
-        <source src="static/{{ file_name }}.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KODLA - Turkish spelling Alphabet</title>
 
-</body>
-</html>     
+    <link rel="shortcut icon" href="static/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="static/assets/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="static/assets/fonts/line-icons.css">
+    <link rel="stylesheet" href="static/assets/css/animate.css">
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <link rel="stylesheet" href="static/assets/css/responsive.css">
+    <link rel="stylesheet" href="static/assets/css/player.css">
+
+  </head>
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Hero Area Start -->
+      <div id="hero-area" class="hero-area-bg">
+        <div class="container">      
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+              <div class="intro-img">
+                <img class="img-fluid" src="static/assets/img/kodla.svg" alt="">
+              </div>
+              <div class="contents">
+                <br>
+                <p>This is an application for codding Turkish alphabet. This is known as the <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">NATO phonetic alphabet.</a></p>
+              </div>           
+            </div>
+            </div>
+          </div> 
+        </div> 
+      </div>
+      <!-- Hero Area End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title fadeInDown">Enter Turkish word / words</h2>
+        </div>
+        <div class="row">
+          <!-- Services item -->
+          <div class="col-md-12 col-lg-12 col-xs-12">
+            <div>
+                <form id="kodla" autocomplete="off" >
+                    <div class="input-group mb-3">
+                        <input type="text" name="words" class="form-control" placeholder="Turkish word/words Only">
+                        <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="button-addon2">KODLA</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <hr>
+                    <div class="col-md-12 col-lg-12 col-xs-12 text-center" id="waiting">Please wait . . .</div>
+                    <div class="col-md-3 col-lg-3 col-xs-12">
+                        <div class="audio-player">
+                            <audio id="kodla-player" src="https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-61905/zapsplat_multimedia_alert_chime_short_musical_notification_cute_child_like_001_64918.mp3?_=1"></audio>
+                            <div class="controls">
+                            <button class="player-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <input type="range" class="timeline" max="100" value="0">
+                            <button class="sound-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#3D3132">
+                                    <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-lg-9 col-xs-12">
+                        <div class="kodla-text"></div>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- About Section start -->
+    <div class="about-area section-padding bg-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-xs-12 info">
+            <div class="about-wrapper fadeInLeft">
+              <div>
+                <div class="site-heading">
+                  <p class="mb-3">Easy to use on the cellphone</p>
+                  <h2 class="section-title">Kodla Telegram robot</h2>
+                </div>
+                <div class="content">
+                  <p>
+                    For easy and fast use, you can use the kodla telegram robot. 
+                    <br />Just send your word to this robot then it will return its nato alphabet with the audio file.  
+                  </p>
+                  <a href="https://t.me/kodlarmisin_bot" class="btn btn-common mt-3">@kodlarmisin_bot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-xs-12 fadeInRight">
+            <img class="img-fluid" src="static/assets/img/img-1.png" alt="" >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- About Section End -->
+
+    <!-- Footer Section Start -->
+    <footer id="footer" class="footer-area section-padding">
+      <div class="container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-mb-12">
+              <div class="widget">
+                <h3 class="footer-logo">Github</h3>
+                <div class="textwidget">
+                  <p>This is a simple pyhton aplication, You can access the source code in the GitHub.</p>
+                  <p><a href="https://github.com/ghassemiN" target="_blank">Github</a> : : <a href="https://medium.com/@ghassemin" target="_blank">Medium</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div> 
+    </footer> 
+    <!-- Footer Section End -->
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    	<i class="lni-arrow-up"></i>
+    </a>
+    
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="static/assets/js/jquery-min.js"></script>
+    <script src="static/assets/js/popper.min.js"></script>
+    <script src="static/assets/js/bootstrap.min.js"></script>
+    <script src="static/assets/js/jquery.easing.min.js"></script>  
+    <script src="static/assets/js/main.js"></script>
+    <script src="static/assets/js/form-validator.min.js"></script>
+    <script src="static/assets/js/player.js"></script>
+    <script src="static/assets/js/mark.min.js"></script>
+      
+  </body>
+</html>
