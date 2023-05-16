@@ -1,11 +1,11 @@
-import re
 from flask import Flask, render_template, request, escape, jsonify
 from letters import *
 from gtts import gTTS
 from playsound import playsound
-import random, string, json
 from credentials import bot_token, bot_user_name,URL
-import telegram
+from rq import Worker, Queue, Connection
+import random, string, json, redis, re, telegram
+
 
 global bot
 global TOKEN
@@ -14,6 +14,7 @@ bot = telegram.Bot(token=TOKEN)
 
 app=Flask(__name__,template_folder='templates', static_folder='static')
 app.config["DEBUG"] = True
+#test33
 
 @app.route('/')
 def home():
