@@ -1,4 +1,4 @@
-# Spelling Turkish Alphabet
+# Spelling Turkis Alphabet
 Kodla is a web application for spelling or codding Turkish alphabet. [NATO phonetic alphabet](https://en.wikipedia.org/wiki/NATO_phonetic_alphabet)
 
 You can visit the Kodla website: [kodla.link](http://kodla.link)
