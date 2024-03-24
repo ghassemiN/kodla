@@ -14,4 +14,3 @@ jobs:
         run: pip install safety
       - name: Check for vulnerabilities
         run: safety check
-```
