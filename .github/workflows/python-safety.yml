@@ -1,7 +1,17 @@
 name: requirements-check
 
 on:
-  push
-  pull_request
+  push:
+  pull_request:
 
 
+jobs:
+  safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install safety
+      - name: Check for vulnerabilities
+        run: safety check
+```
