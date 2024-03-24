@@ -1,10 +1,11 @@
 name: requirements-check
 
 on:
-  workflow_dispatch:
   push:
-    branches-ignore:
-      - '**'
+  pull_request:
+    branches:
+      - main
+
 
 
 jobs:
@@ -13,6 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: pip install safety
+        run: pip install --upgrade pip pip-audit
       - name: Check for vulnerabilities
-        run: safety check
+        run: pip-audit --requirement requirements.txt
