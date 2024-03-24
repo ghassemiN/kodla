@@ -1,0 +1,7 @@
+name: requirements-check
+
+on:
+  push
+  pull_request
+
+
